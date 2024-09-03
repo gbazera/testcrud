@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-bar">
+    <p class="heading">Users</p>
+    <div class="r">
+      <a href="/new" class="btn">New User</a>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="user: ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+          <a th:href="@{/edit(id=${user.id})}" class="button is-info">Edit</a>
+          <a th:href="@{/delete(id=${user.id})}" class="button is-danger">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

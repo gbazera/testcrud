@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit User</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-bar">
+    <p class="heading">Edit User</p>
+    <div class="r">
+      <a href="/" class="btn">Back</a>
+    </div>
+  </div>
+  <form method="post" th:object="${user}" th:action="@{/edit}">
+    <div class="field">
+      <label class="label">ID</label>
+      <div class="control">
+        <input class="input is-static" type="text" name="id" th:value="${user.id}" th:field="*{id}" readonly>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">First Name</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Enter first name.." name="firstname" th:field="*{firstName}">
+      </div>
+      
+      <p class="help is-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">This asdads is invalid</p>
+    </div>
+
+    <div class="field">
+      <label class="label">Last Name</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Enter last name.." name="lastname" th:field="*{lastName}">
+      </div>
+      <p class="help is-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">This sadasda is invalid</p>
+    </div>
+    
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" type="email" placeholder="Enter email address.." name="email" th:field="*{email}">
+      </div>
+      <p class="help is-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">This email is invalid</p>
+    </div>
+    
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-primary" type="submit">Edit</button>
+      </div>
+      <div class="control">
+        <a class="button" href="/">Cancel</a>
+      </div>
+    </div>
+  </form>
+</body>
+</html>
